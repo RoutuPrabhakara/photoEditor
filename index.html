@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+   #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 100px;
+            background-color: black;
+        }
+        #container img {
+            width: 200px;
+            height: 200px;
+            margin: 30px;
+            padding: 30px;
+            border: 5px solid black;
+        }
+        .photo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+        }
+        img:hover{
+            transform: rotate3d(1, 1, 1, 360deg); 
+            transition: 2s;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img src="https://c.saavncdn.com/302/Amma-Durgamma-Kanaka-Durgamma-Songs--Telugu-2021-20210114053546-500x500.jpg" alt="Images" id="images">
+        
+    </div>
+    <div class="photo">
+        <label for="">BrightNess:</label><br><br>
+        <input type="range" value="100" name="" id="brightness" min="0" max="500" onchange="Handle()">
+    </div>
+    <div class="photo">
+        <label for="">Saturation:</label><br><br>
+        <input type="range" value="100" name="" id="saturate" min="0" max="300" onchange="Handle()">
+    </div>
+    <div class="photo">
+        <label for="">Hue:</label><br><br>
+        <input type="range"  name="" id="hue" min="0" max="360" onchange="Handle()">
+    </div>
+    <div class="photo">
+        <label for="">Contrast:</label><br><br>
+        <input type="range" value="100" name="" id="contrast" min="0" max="360" onchange="Handle()">
+    </div>
+    <div class="photo">
+        <label for="">Border-Width:</label><br><br>
+        <input type="range" name="" id="border" min="0" max="360" onchange="Handle()">
+    </div>
+    <div class="photo">
+        <label for="">Color:</label><br><br>
+        <input type="color" name=""  value="green" id="color" min="0" max="360" onchange="Handle()">
+    </div>
+    <script>
+        let container =document.getElementById('container');
+        let  brightness = document.getElementById('brightness');
+        let saturate = document.getElementById('saturate');
+        let hue = document.getElementById('hue');
+        let contrast = document.getElementById('contrast');
+        let border = document.getElementById('border')
+        let color = document.getElementById('color')
+        let image = document.getElementById('images')
+
+        function Handle(){
+
+
+            image.style.filter = `
+    brightness(${brightness.value}%)
+    saturate(${saturate.value}%)
+    hue-rotate(${hue.value}deg)
+    contrast(${contrast.value}%)
+`;
+
+image.style.borderWidth = `${border.value}px`;
+image.style.borderRadius=`${border.value}% `
+image.style.borderColor = color.value;  
+
+        }
+       console.log( Handle())
+    </script>
+</body>
+</html>
